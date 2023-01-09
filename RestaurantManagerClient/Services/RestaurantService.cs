@@ -18,9 +18,29 @@ public class RestaurantService
          return RestaurantRepository.GetAll(new UnitOfWork()).Result.ToList();
     }
 
+    public Restaurant GetRestaurantById(string id)
+    {
+        return RestaurantRepository.GetById(id).Result;
+    }
+    
     public void AddNewRestaurant(Restaurant restaurant)
     {
         RestaurantRepository.Save(restaurant);
     }
+
+    public void UpdateRestaurant(Restaurant restaurant)
+    {
+        using var uow = new UnitOfWork();
+        var itemToUpdate = uow.GetObjectByKey<Restaurant>(restaurant.Id);
+        if (itemToUpdate == null)
+            return;
+
+        itemToUpdate.Name = restaurant.Name;
+        RestaurantRepository.Update(itemToUpdate, uow);
+    }
     
+    public void RemoveRestaurant(string id)
+    {
+        RestaurantRepository.Delete(id);
+    }
 }
