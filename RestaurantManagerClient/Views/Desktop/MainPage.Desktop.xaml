@@ -8,7 +8,7 @@
              x:Class="RestaurantManagerClient.Views.Desktop.MainPageDesktop">
     <ContentPage.Content>
         <VerticalStackLayout>
-        <Entry Text="{Binding NewRestaurant.Name}"/>
+        <Entry Text="{Binding NewRestaurant.Name}" ReturnCommand="{Binding AddNewRestaurantCommand}" />
         <Button Text="Add" Command="{Binding AddNewRestaurantCommand}"/>
         <CollectionView ItemsSource="{Binding Restaurants}">
             <CollectionView.ItemTemplate>
