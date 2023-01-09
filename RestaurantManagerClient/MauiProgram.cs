@@ -2,6 +2,12 @@
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using Microsoft.Extensions.Logging;
+using RestaurantManagerClient.Models;
+using RestaurantManagerClient.Repositories;
+using RestaurantManagerClient.Services;
+using RestaurantManagerClient.ViewModels;
+using RestaurantManagerClient.Views.Desktop;
+using RestaurantManagerClient.Views.Mobile;
 
 namespace RestaurantManagerClient;
 
@@ -22,7 +28,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
+        
+        builder.Services.AddSingleton<Repository<Restaurant>>();
+        builder.Services.AddSingleton<RestaurantService>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
