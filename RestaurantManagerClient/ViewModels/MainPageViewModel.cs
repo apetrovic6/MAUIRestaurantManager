@@ -31,4 +31,18 @@ public partial class MainPageViewModel : ObservableObject
         RestaurantService.AddNewRestaurant(NewRestaurant);
         GetRestaurants();
     }
+
+    [RelayCommand]
+    private void DeleteRestaurant(string id)
+    {
+        RestaurantService.RemoveRestaurant(id);
+        GetRestaurants();
+    }
+
+    [RelayCommand]
+    private void UpdateRestaurant(Restaurant restaurant)
+    {
+        RestaurantService.UpdateRestaurant(restaurant);
+        GetRestaurants();
+    }
 }
