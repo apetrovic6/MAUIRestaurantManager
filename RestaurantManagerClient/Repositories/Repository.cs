@@ -7,7 +7,7 @@ namespace RestaurantManagerClient.Repositories;
 public class Repository<T> : IGenericRepository<T> where T : BaseModel
 {
 
-    public async Task<IEnumerable<T>> GetAll(Session uow)
+    public async Task<IEnumerable<T>> GetAll(UnitOfWork uow)
     {
         try
         {

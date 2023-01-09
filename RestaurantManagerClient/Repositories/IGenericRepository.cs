@@ -5,7 +5,7 @@ namespace RestaurantManagerClient.Repositories;
 
     public interface IGenericRepository<T> where T : BaseModel
     {
-        Task<IEnumerable<T>> GetAll(Session uow);
+        Task<IEnumerable<T>> GetAll(UnitOfWork uow);
         Task<T> GetById(string id);
         void Update(T obj, UnitOfWork uow);
         void Delete(string id);
