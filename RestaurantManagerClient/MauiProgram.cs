@@ -31,6 +31,10 @@ public static class MauiProgram
         
         builder.Services.AddSingleton<Repository<Restaurant>>();
         builder.Services.AddSingleton<RestaurantService>();
+        
+        builder.Services.AddSingleton<MainPageDesktop>();
+        builder.Services.AddSingleton<MainPageMobile>();
+        builder.Services.AddSingleton<MainPageViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
