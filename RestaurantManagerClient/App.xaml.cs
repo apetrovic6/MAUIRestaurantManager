@@ -6,6 +6,10 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
+        #if ANDROID || IOS
+            MainPage = new AppShellMobile();
+        #else
+            MainPage = new AppShellDesktop();
+        #endif
     }
 }
