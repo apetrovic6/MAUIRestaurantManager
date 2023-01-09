@@ -28,18 +28,10 @@ public class Repository<T> : IGenericRepository<T> where T : BaseModel
         }
     }
 
-    public async void Update(T obj)
+    public async void Update(T obj, UnitOfWork uow)
     {
-        using (var uow = new UnitOfWork())
-        {
-            var itemToUpdate = uow.GetObjectByKey<T>(obj.Id);
-            if (itemToUpdate == null)
-            {
-                return;
-            }
-            uow.Save(obj);
-            uow.CommitChanges();
-        }
+        uow.Save(obj);
+        uow.CommitChanges();
     }
 
     public void Delete(string id)
