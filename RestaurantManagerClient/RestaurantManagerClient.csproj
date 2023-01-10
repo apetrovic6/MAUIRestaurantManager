@@ -56,4 +56,24 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <MauiXaml Update="Views\Desktop\MenuPages\AddMenuPage.Desktop.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="Views\Desktop\MenuPages\MenuPage.Desktop.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Desktop\MenuPages\AddMenuPage.Desktop.xaml.cs">
+        <DependentUpon>AddMenuPage.Desktop.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Desktop\MenuPages\MenuPage.Desktop.xaml.cs">
+        <DependentUpon>MenuPage.Desktop.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>
