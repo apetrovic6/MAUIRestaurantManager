@@ -8,14 +8,10 @@ namespace RestaurantManagerClient.ViewModels;
 public partial class MenuPageViewModel : ObservableObject
 {
     private MenuService MenuService { get; set; }
-    
+
     [ObservableProperty] 
     private List<Menu> _menus;
 
-    [ObservableProperty] private string _newName;
-
-    [ObservableProperty] private string _resId;
-    
     public MenuPageViewModel(MenuService menuService)
     {
         MenuService = menuService;
@@ -29,15 +25,28 @@ public partial class MenuPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void AddMenu()
+    private void UpdateMenu(Menu menu)
     {
-        var a = new Menu()
-        {
-            Name = NewName,
-            Restaurant = new() { Id = ResId }
-        };
-        MenuService.AddNewMenu(NewName, ResId);
-        
+        MenuService.UpdateMenu(menu);
         GetMenus();
+    }
+
+    [RelayCommand]
+    private void DeleteMenu(string id)
+    {
+        MenuService.RemoveMenu(id);
+        GetMenus();
+    }
+    
+    [RelayCommand]
+    private async void GoToAddMenuPage()
+    {
+        // Get current page
+        var page = Shell.Current.Navigation.NavigationStack.LastOrDefault();
+        
+        // Load new page
+        await Shell.Current.GoToAsync("AddMenuPage", false);
+
+
     }
 }
