@@ -12,7 +12,8 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private List<Restaurant> _restaurants;
 
-    [ObservableProperty] private Restaurant _newRestaurant = new();
+    [ObservableProperty] 
+    private Restaurant _newRestaurant = new();
     
     public MainPageViewModel(RestaurantService restaurantService)
     {
