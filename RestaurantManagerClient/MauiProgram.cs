@@ -30,11 +30,17 @@ public static class MauiProgram
             });
         
         builder.Services.AddSingleton<Repository<Restaurant>>();
+        builder.Services.AddSingleton<Repository<Menu>>();
+        
         builder.Services.AddSingleton<RestaurantService>();
+        builder.Services.AddSingleton<MenuService>();
         
         builder.Services.AddSingleton<MainPageDesktop>();
         builder.Services.AddSingleton<MainPageMobile>();
         builder.Services.AddSingleton<MainPageViewModel>();
+
+        builder.Services.AddTransient<MenuPageViewModel>();
+        builder.Services.AddTransient<MenuPageDesktop>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
