@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
+             xmlns:model="clr-namespace:RestaurantManagerClient.Models"
+             x:DataType="vm:AddMenuPageViewModel"
+             x:Class="RestaurantManagerClient.Views.Desktop.MenuPages.AddMenuPageDesktop"
+             Title="Add New Menu">
+    
+    <ContentPage.Content>
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    
+            <Label Text="Menu Name"/>
+            <Entry Text="{Binding NewName }"/>
+            <Label Text="Restaurant Name"/>
+            <Picker
+                Title="Select A Restaurant for the new Menu"
+                ItemsSource="{Binding Restaurants }" 
+                SelectedItem="{Binding SelectedRestaurant}" 
+                ItemDisplayBinding="{Binding Name}" 
+                />
+            
+            <Label Text="{Binding SelectedRestaurant.Id}" />
+            <Button Text="Add new Menu" Command="{Binding AddNewMenuCommand}"/>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
