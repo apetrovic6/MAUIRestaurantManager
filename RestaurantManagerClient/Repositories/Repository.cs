@@ -47,11 +47,20 @@ public class Repository<T> : IGenericRepository<T> where T : BaseModel
         }
     }
 
-    public async void Save(T obj)
+    public void Save(T obj, UnitOfWork uow)
+    {
+        obj.Id = Guid.NewGuid().ToString();
+        
+        uow.Save(obj);
+        uow.CommitChanges();
+    }
+
+    public void Save(T obj)
     {
         using (var uow = new UnitOfWork())
         {
             obj.Id = Guid.NewGuid().ToString();
+
             uow.Save(obj);
             uow.CommitChanges();
         }
