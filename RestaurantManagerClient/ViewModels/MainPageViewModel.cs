@@ -11,9 +11,6 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty]
     private List<Restaurant> _restaurants;
-
-    [ObservableProperty] 
-    private Restaurant _newRestaurant = new();
     
     public MainPageViewModel(RestaurantService restaurantService)
     {
@@ -26,24 +23,5 @@ public partial class MainPageViewModel : ObservableObject
         Restaurants = RestaurantService.GetAllRestaurants();
     }
     
-    [RelayCommand]
-    private void AddNewRestaurant()
-    {
-        RestaurantService.AddNewRestaurant(NewRestaurant);
-        GetRestaurants();
-    }
-
-    [RelayCommand]
-    private void DeleteRestaurant(string id)
-    {
-        RestaurantService.RemoveRestaurant(id);
-        GetRestaurants();
-    }
-
-    [RelayCommand]
-    private void UpdateRestaurant(Restaurant restaurant)
-    {
-        RestaurantService.UpdateRestaurant(restaurant);
-        GetRestaurants();
-    }
+    
 }

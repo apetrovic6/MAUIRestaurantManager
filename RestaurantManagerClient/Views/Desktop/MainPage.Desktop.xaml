@@ -4,34 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
              xmlns:model="clr-namespace:RestaurantManagerClient.Models"
-             x:DataType="vm:MainPageViewModel"
-             x:Class="RestaurantManagerClient.Views.Desktop.MainPageDesktop">
+             x:DataType="vm:RestaurantViewModel"
+             x:Class="RestaurantManagerClient.Views.Desktop.MainPageDesktop"
+             Title="Overview">
     <ContentPage.Content>
         <VerticalStackLayout>
-        <Entry Text="{Binding NewRestaurant.Name}" ReturnCommand="{Binding AddNewRestaurantCommand}" />
-        <Button Text="Add" Command="{Binding AddNewRestaurantCommand}"/>
-        <CollectionView ItemsSource="{Binding Restaurants}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Restaurant">
-                    <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
-                        <Entry Text="{Binding Id}" />
-                        <Entry Text="{Binding Name}" />
-                        <Button Text="Update" 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, 
-                                Path=UpdateRestaurantCommand}"
-                                CommandParameter="{Binding  }" 
-                                VerticalOptions="End"
-                                HorizontalOptions="End" />
-                        <Button Text="Delete" 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, 
-                                Path=DeleteRestaurantCommand}"
-                                CommandParameter="{Binding  Id }" 
-                                VerticalOptions="End"
-                                HorizontalOptions="End" />
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            <Label Text="Welcome"/>
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
