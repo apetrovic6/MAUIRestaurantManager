@@ -28,7 +28,7 @@ public class Repository<T> : IGenericRepository<T> where T : BaseModel
         }
     }
 
-    public async void Update(T obj, UnitOfWork uow)
+    public void Update(T obj, UnitOfWork uow)
     {
         uow.Save(obj);
         uow.CommitChanges();
