@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantManagerClient.Views.Desktop;
+using RestaurantManagerClient.Views.Desktop.MenuPages;
+using RestaurantManagerClient.Views.Desktop.RestaurantPages;
 
 namespace RestaurantManagerClient;
 
@@ -15,5 +17,6 @@ public partial class AppShellDesktop : Shell
         
         Routing.RegisterRoute("MainPage", typeof(MainPageDesktop));
         Routing.RegisterRoute("MenuPage", typeof(MenuPageDesktop));
+        Routing.RegisterRoute("RestaurantPage", typeof(RestaurantPage));
     }
 }

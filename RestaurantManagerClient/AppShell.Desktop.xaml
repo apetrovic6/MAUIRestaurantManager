@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RestaurantManagerClient.Views.Desktop"
+    xmlns:restaurant="clr-namespace:RestaurantManagerClient.Views.Desktop.RestaurantPages"
+    xmlns:menuPages="clr-namespace:RestaurantManagerClient.Views.Desktop.MenuPages"
     Shell.FlyoutBehavior="Locked">
     
         <ShellContent
@@ -12,7 +14,12 @@
         Route="MainPage" />
         
         <ShellContent
+            Title="Restaurants"
+            ContentTemplate="{DataTemplate restaurant:RestaurantPage }"
+            Route="RestaurantPage" />
+        
+        <ShellContent
             Title="Menu"
-            ContentTemplate="{DataTemplate local:MenuPageDesktop}"
+            ContentTemplate="{DataTemplate menuPages:MenuPageDesktop}"
             Route="MenuPage" />
 </Shell>
