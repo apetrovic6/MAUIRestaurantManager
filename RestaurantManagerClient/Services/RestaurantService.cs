@@ -32,8 +32,8 @@ public class RestaurantService
     {
         using var uow = new UnitOfWork();
         var itemToUpdate = uow.GetObjectByKey<Restaurant>(restaurant.Id);
-        if (itemToUpdate == null)
-            return;
+        
+        if (itemToUpdate == null) return;
 
         itemToUpdate.Name = restaurant.Name;
         RestaurantRepository.Update(itemToUpdate, uow);
