@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
+             xmlns:model="clr-namespace:RestaurantManagerClient.Models"
+             x:DataType="vm:RestaurantViewModel"
+             x:Class="RestaurantManagerClient.Views.Desktop.RestaurantPages.RestaurantPage"
+            Title="Restaurants">
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Button StyleClass="CircularButton" Text="+" Command="{Binding AddNewRestaurantCommand }"/>
+            <Label Text="Restaurant Name"/>
+            <Entry Text="{Binding  NewRestaurant.Name}"/>
+            <Button Text="Add New Restaurant" Command="{Binding AddNewRestaurantCommand}"/>
+            <VerticalStackLayout Spacing="15">
+                <CollectionView ItemsSource="{Binding Restaurants}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Restaurant">
+                            <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Entry Text="{Binding Id}" />
+                                <Entry Text="{Binding Name}" />
+                                <Button Text="Update" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RestaurantViewModel}}, 
+                                Path=UpdateRestaurantCommand}"
+                                        CommandParameter="{Binding  }" 
+                                        VerticalOptions="End"
+                                        HorizontalOptions="End" />
+                                <Button Text="Delete" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RestaurantViewModel}}, 
+                                Path=DeleteRestaurantCommand}"
+                                        CommandParameter="{Binding  Id }" 
+                                        VerticalOptions="End"
+                                        HorizontalOptions="End" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
