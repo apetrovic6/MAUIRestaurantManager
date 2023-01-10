@@ -7,6 +7,8 @@ using RestaurantManagerClient.Repositories;
 using RestaurantManagerClient.Services;
 using RestaurantManagerClient.ViewModels;
 using RestaurantManagerClient.Views.Desktop;
+using RestaurantManagerClient.Views.Desktop.MenuPages;
+using RestaurantManagerClient.Views.Desktop.RestaurantPages;
 using RestaurantManagerClient.Views.Mobile;
 
 namespace RestaurantManagerClient;
@@ -41,6 +43,10 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MenuPageViewModel>();
         builder.Services.AddTransient<MenuPageDesktop>();
+
+        builder.Services.AddTransient<RestaurantPage>();
+        builder.Services.AddTransient<RestaurantViewModel>();
+        builder.Services.AddTransient<AddMenuPageDesktop>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
