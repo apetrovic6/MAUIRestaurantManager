@@ -1,5 +1,4 @@
-﻿using DevExpress.Entity.Model;
-using DevExpress.Xpo;
+﻿using DevExpress.Xpo;
 using RestaurantManagerClient.Models;
 
 namespace RestaurantManagerClient.Repositories;
