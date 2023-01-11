@@ -28,7 +28,7 @@
                                 <Button Text="Delete" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MenuPageViewModel}}, 
                                 Path=DeleteMenuCommand}"
-                                        CommandParameter="{Binding  Id }" 
+                                        CommandParameter="{Binding  Oid }" 
                                         VerticalOptions="End"
                                         HorizontalOptions="End" />
                             </HorizontalStackLayout>
