@@ -4,12 +4,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
              xmlns:model="clr-namespace:RestaurantManagerClient.Models"
-             x:DataType="vm:RestaurantViewModel"
+             x:DataType="vm:MainPageViewModel"
              x:Class="RestaurantManagerClient.Views.Desktop.MainPageDesktop"
              Title="Overview">
     <ContentPage.Content>
         <VerticalStackLayout>
             <Label Text="Welcome"/>
+            <CollectionView ItemsSource="{Binding Restaurants}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Restaurant">
+                        <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Entry Text="{Binding Id}" />
+                            <Entry Text="{Binding Name}" />
+                            <CollectionView ItemsSource="{Binding Menus}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="model:Menu">
+                                        <Label Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
