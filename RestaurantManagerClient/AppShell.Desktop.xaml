@@ -19,7 +19,7 @@
             Route="RestaurantPage" />
         
         <ShellContent
-            Title="Menu"
+            Title="Menus"
             ContentTemplate="{DataTemplate menuPages:MenuPageDesktop}"
             Route="MenuPage" />
 </Shell>
