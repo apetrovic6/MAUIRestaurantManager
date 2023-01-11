@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DevExpress.Xpo;
 using RestaurantManagerClient.Models;
 using RestaurantManagerClient.Services;
 
@@ -12,12 +13,10 @@ public partial class AddMenuPageViewModel : ObservableObject
     
     [ObservableProperty]
     private List<Restaurant> _restaurants;
-
-    
     
     public string NewName { get; set; }
 
-    [ObservableProperty] private Restaurant _selectedRestaurant = new();
+    [ObservableProperty] private Restaurant _selectedRestaurant;
     
     public AddMenuPageViewModel(RestaurantService restaurantService, MenuService menuService)
     {
@@ -35,10 +34,7 @@ public partial class AddMenuPageViewModel : ObservableObject
     [RelayCommand]
     private async void AddNewMenu()
     {
-        var lastPage = Shell.Current.Navigation.NavigationStack.LastOrDefault();
-        
-        MenuService.AddNewMenu(NewName, SelectedRestaurant.Id);
-         Shell.Current.Navigation.RemovePage(lastPage);
-         await Shell.Current.GoToAsync("MenuPage");
+        MenuService.AddNewMenu(NewName, SelectedRestaurant.Oid);
+         await Shell.Current.GoToAsync("..");
     }
 }
