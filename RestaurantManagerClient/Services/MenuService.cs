@@ -15,12 +15,7 @@ public class MenuService
 
     public List<Menu> GetAll()
     {
-        // using (var uow = new UnitOfWork())
-        // {
-        //     return uow.Query<Menu>().Where(x => x.Restaurant.Id == "ab8dbb32-29a2-48fc-8035-43b22b8356d9")
-        //         .ToList();
-        // }
-        return MenuRepository.GetAll(new UnitOfWork()).Result.ToList();
+        return MenuRepository.GetAll().Result.ToList();
     }
 
     public Menu GetMenuById(int id)
@@ -28,15 +23,14 @@ public class MenuService
         return MenuRepository.GetById(id).Result;
     }
 
-    public void AddNewMenu(string newName, string resId)
+    public void AddNewMenu(string newName, int resId)
     {
         using (var uow = new UnitOfWork())
         {
             var restaurant = uow.GetObjectByKey<Restaurant>(resId);
 
-            Menu menu = new();
+            Menu menu = new Menu(uow);
             
-            menu.Id = Guid.NewGuid().ToString();
             menu.Name = newName;
             menu.Restaurant = restaurant;
             MenuRepository.Save(menu, uow);
@@ -47,7 +41,7 @@ public class MenuService
     public void UpdateMenu(Menu menu)
     {
         using var uow = new UnitOfWork();
-        var itemToUpdate = uow.GetObjectByKey<Menu>(menu.Id);
+        var itemToUpdate = uow.GetObjectByKey<Menu>(menu.Oid);
         
         if (itemToUpdate == null) return;
 
