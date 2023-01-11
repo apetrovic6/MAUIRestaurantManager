@@ -9,38 +9,20 @@
             Title="Restaurants">
     <ContentPage.Content>
         <VerticalStackLayout>
-            <Button StyleClass="CircularButton" Text="+" Command="{Binding AddNewRestaurantCommand }"/>
+            <Button WidthRequest="50" HeightRequest="50" CornerRadius="25" Text="+" Command="{Binding AddNewRestaurantCommand }"/>
             <Button Text="Refresh" Command="{Binding RefreshCommand }"/>
             <Label Text="Restaurant Name"/>
             <Entry Text="{Binding  NewRestaurant.Name}"/>
             <Button Text="Add New Restaurant" Command="{Binding AddNewRestaurantCommand}"/>
             <VerticalStackLayout Spacing="15">
-                <CollectionView ItemsSource="{Binding Restaurants}">
+                <CollectionView ItemsSource="{Binding Restaurants}" ItemsLayout="VerticalGrid, 6" 
+                                SelectionMode="Single"
+                >
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Restaurant">
-                            <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
-                                <Entry Text="{Binding Id}" />
-                                <Entry Text="{Binding Name}" />
-                                <CollectionView ItemsSource="{Binding Menus}">
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate x:DataType="model:Menu">
-                                            <Label Text="{Binding Name}"/>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                                <Button Text="Update" 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RestaurantViewModel}}, 
-                                Path=UpdateRestaurantCommand}"
-                                        CommandParameter="{Binding  }" 
-                                        VerticalOptions="End"
-                                        HorizontalOptions="End" />
-                                <Button Text="Delete" 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RestaurantViewModel}}, 
-                                Path=DeleteRestaurantCommand}"
-                                        CommandParameter="{Binding  Oid }" 
-                                        VerticalOptions="End"
-                                        HorizontalOptions="End" />
-                            </HorizontalStackLayout>
+                            <Frame Margin="20" Padding="10">
+                                <Label Text="{Binding Name}"/>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
