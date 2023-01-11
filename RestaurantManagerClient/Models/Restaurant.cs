@@ -2,12 +2,21 @@
 
 namespace RestaurantManagerClient.Models;
 
-[Persistent]
+
 public class Restaurant : BaseModel
 {
-    [Size(50)]
-    public string Name { get; set; }
-    
-    [Association("Menus-Restaurant")] 
-    public XPCollection<Menu> Menus { get; set; }
+    private string _Name;
+    public Restaurant(Session session) : base(session) { }
+    public Restaurant() {}
+
+    public string Name
+    {
+        get => _Name;
+        set => SetPropertyValue(nameof(Name), ref _Name, value);
+    }
+
+    [Association("Menus-Restaurant")] public XPCollection<Menu> Menus
+    {
+        get => GetCollection<Menu>(nameof(Menus));
+    }
 }

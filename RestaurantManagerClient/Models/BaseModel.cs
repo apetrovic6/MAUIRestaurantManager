@@ -2,8 +2,17 @@
 
 namespace RestaurantManagerClient.Models;
 
-public class BaseModel
+[NonPersistent]
+public class BaseModel : XPObject
 {
-    [Key]
-    public string Id { get; set; }
+    public BaseModel(Session session) :base (session){}
+    public BaseModel(){}
+    
+    private string _Id;
+    
+    public string Id
+    {
+        get => _Id;
+        set => SetPropertyValue(nameof(Id), ref _Id, value);
+    }
 }
