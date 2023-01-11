@@ -18,6 +18,7 @@
                             <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
                                 <Entry Text="{Binding Id}" />
                                 <Entry Text="{Binding Name}" />
+                                <Label Text="{Binding Restaurant.Name}"/>
                                 <Button Text="Update" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MenuPageViewModel}}, 
                                 Path=UpdateMenuCommand}"
