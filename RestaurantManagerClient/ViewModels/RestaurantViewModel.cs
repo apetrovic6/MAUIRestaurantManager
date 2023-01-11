@@ -27,6 +27,12 @@ public partial class RestaurantViewModel : ObservableObject
     {
         Restaurants = RestaurantService.GetAllRestaurants();
     }
+
+    [RelayCommand]
+    private void Refresh()
+    {
+        Restaurants = RestaurantService.GetAllRestaurants();
+    }
     
     [RelayCommand]
     private void AddNewRestaurant()
