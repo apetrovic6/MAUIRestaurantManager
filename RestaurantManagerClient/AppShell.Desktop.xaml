@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:RestaurantManagerClient.Views.Desktop"
     xmlns:restaurant="clr-namespace:RestaurantManagerClient.Views.Desktop.RestaurantPages"
     xmlns:menuPages="clr-namespace:RestaurantManagerClient.Views.Desktop.MenuPages"
+    xmlns:MealPages="clr-namespace:RestaurantManagerClient.Views.Desktop.MealsPages"
     Shell.FlyoutBehavior="Locked">
     
         <ShellContent
@@ -22,4 +23,9 @@
             Title="Menus"
             ContentTemplate="{DataTemplate menuPages:MenuPageDesktop}"
             Route="MenuPage" />
+        
+        <ShellContent
+            Title="Meals"
+            ContentTemplate="{DataTemplate MealPages:MealPageDesktop}"
+            Route="MealPage" />
 </Shell>
