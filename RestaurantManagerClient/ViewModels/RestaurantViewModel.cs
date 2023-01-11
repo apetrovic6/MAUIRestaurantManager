@@ -36,7 +36,7 @@ public partial class RestaurantViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void DeleteRestaurant(string id)
+    private void DeleteRestaurant(int id)
     {
         RestaurantService.RemoveRestaurant(id);
         GetRestaurants();
