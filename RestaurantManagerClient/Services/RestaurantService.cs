@@ -18,7 +18,7 @@ public class RestaurantService
          return RestaurantRepository.GetAll(new UnitOfWork()).Result.ToList();
     }
 
-    public Restaurant GetRestaurantById(string id)
+    public Restaurant GetRestaurantById(int id)
     {
         return RestaurantRepository.GetById(id).Result;
     }
@@ -39,7 +39,7 @@ public class RestaurantService
         RestaurantRepository.Update(itemToUpdate, uow);
     }
     
-    public void RemoveRestaurant(string id)
+    public void RemoveRestaurant(int id)
     {
         RestaurantRepository.Delete(id);
     }
