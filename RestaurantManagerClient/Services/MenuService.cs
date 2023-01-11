@@ -23,7 +23,7 @@ public class MenuService
         return MenuRepository.GetAll(new UnitOfWork()).Result.ToList();
     }
 
-    public Menu GetMenuById(string id)
+    public Menu GetMenuById(int id)
     {
         return MenuRepository.GetById(id).Result;
     }
@@ -55,7 +55,7 @@ public class MenuService
         MenuRepository.Update(itemToUpdate, uow);
     }
 
-    public void RemoveMenu(string id)
+    public void RemoveMenu(int id)
     {
         MenuRepository.Delete(id);
     } 

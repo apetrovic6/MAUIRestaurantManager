@@ -19,7 +19,7 @@ public class Repository<T> : IGenericRepository<T> where T : BaseModel
         }
     }
 
-    public async Task<T> GetById(string id)
+    public async Task<T> GetById(int id)
     {
         using (var uow = new UnitOfWork())
         {
@@ -33,7 +33,7 @@ public class Repository<T> : IGenericRepository<T> where T : BaseModel
         uow.CommitChanges();
     }
 
-    public void Delete(string id)
+    public void Delete(int id)
     {
         using (var uow = new UnitOfWork())
         {
