@@ -47,12 +47,6 @@ public partial class MenuPageViewModel : ObservableObject
     [RelayCommand]
     private async void GoToAddMenuPage()
     {
-        // Get current page
-        var page = Shell.Current.Navigation.NavigationStack.LastOrDefault();
-        
-        // Load new page
         await Shell.Current.GoToAsync("AddMenuPage", false);
-
-
     }
 }
