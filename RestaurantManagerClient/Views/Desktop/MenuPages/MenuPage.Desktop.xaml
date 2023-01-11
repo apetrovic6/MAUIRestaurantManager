@@ -6,7 +6,7 @@
              xmlns:model="clr-namespace:RestaurantManagerClient.Models"
              x:DataType="vm:MenuPageViewModel"
              x:Class="RestaurantManagerClient.Views.Desktop.MenuPages.MenuPageDesktop"
-             Title="Menu Page">
+             Title="Menus">
     <ContentPage.Content>
         <VerticalStackLayout>
             <Button WidthRequest="50" HeightRequest="50" CornerRadius="50" Text="+" Command="{Binding GoToAddMenuPageCommand}"/>
