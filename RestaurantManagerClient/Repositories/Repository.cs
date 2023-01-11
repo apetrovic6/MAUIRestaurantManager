@@ -20,12 +20,11 @@ public class Repository<T> : IGenericRepository<T> where T : BaseModel
         // }
     }
 
-    public async Task<T> GetById(int id)
+    public Task<T> GetById(int id)
     {
-        using (var uow = new UnitOfWork())
-        {
-            return await Task.FromResult(uow.GetObjectByKey<T>(id));
-        }
+
+        var res = new XPQuery<T>(new Session()).Where(x => x.Oid == id);
+        return Task.FromResult(res.FirstOrDefault());
     }
 
     public void Update(T obj, UnitOfWork uow)
