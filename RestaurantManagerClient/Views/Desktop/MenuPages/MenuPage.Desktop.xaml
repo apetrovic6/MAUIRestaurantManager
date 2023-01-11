@@ -9,7 +9,7 @@
              Title="Menus">
     <ContentPage.Content>
         <VerticalStackLayout>
-            <Button WidthRequest="50" HeightRequest="50" CornerRadius="50" Text="+" Command="{Binding GoToAddMenuPageCommand}"/>
+            <Button WidthRequest="50" HeightRequest="50" CornerRadius="25" Text="+" Command="{Binding GoToAddMenuPageCommand}"/>
             <Button Text="Refresh" Command="{Binding RefreshCommand}"/>
             <VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Menus}">
