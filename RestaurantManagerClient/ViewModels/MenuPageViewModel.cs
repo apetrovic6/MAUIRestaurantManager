@@ -38,7 +38,7 @@ public partial class MenuPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void DeleteMenu(string id)
+    private void DeleteMenu(int id)
     {
         MenuService.RemoveMenu(id);
         GetMenus();
