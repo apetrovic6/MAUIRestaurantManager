@@ -48,6 +48,9 @@ public static class MauiProgram
         builder.Services.AddTransient<RestaurantViewModel>();
         builder.Services.AddTransient<AddMenuPageDesktop>();
         builder.Services.AddTransient <AddMenuPageViewModel>();
+
+        builder.Services.AddScoped<RestaurantDetailPageDesktop>();
+        builder.Services.AddScoped<RestaurantDetailViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
