@@ -6,17 +6,18 @@ namespace RestaurantManagerClient.Repositories;
 public class Repository<T> : IGenericRepository<T> where T : BaseModel
 {
 
-    public async Task<IEnumerable<T>> GetAll(UnitOfWork uow)
+    public async Task<IEnumerable<T>> GetAll()
     {
-        try
-        {
-            return await Task.FromResult(uow.Query<T>());
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            return null;
-        }
+        // try
+        // {
+            var query = new XPQuery<T>(new Session());
+            return await Task.FromResult(query);
+        // }
+        // catch (Exception e)
+        // {
+            // Console.WriteLine(e);
+            // return Task.FromException<T>(null);
+        // }
     }
 
     public async Task<T> GetById(int id)
