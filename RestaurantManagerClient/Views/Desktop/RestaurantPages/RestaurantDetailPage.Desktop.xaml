@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
+             xmlns:model="clr-namespace:RestaurantManagerClient.Models"
+             x:DataType="vm:RestaurantDetailViewModel"
+             Title="{Binding FetchedRestaurant.Name}"
+             x:Class="RestaurantManagerClient.Views.Desktop.RestaurantPages.RestaurantDetailPageDesktop"
+             >
+    <ContentPage.Content>
+        <VerticalStackLayout>
+        <Label Text="Restaurant Details"/>        
+        <Label Text="{Binding FetchedRestaurant.Name}" />
+        
+        <Label Text="Menus"/>
+        <CollectionView ItemsSource="{Binding FetchedRestaurant.Menus}"
+                        
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Menu">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
