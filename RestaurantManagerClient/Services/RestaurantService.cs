@@ -15,7 +15,7 @@ public class RestaurantService
 
     public List<Restaurant> GetAllRestaurants() 
     {
-         return RestaurantRepository.GetAll(new UnitOfWork()).Result.ToList();
+            return RestaurantRepository.GetAll().Result.ToList();
     }
 
     public Restaurant GetRestaurantById(int id)
@@ -25,13 +25,19 @@ public class RestaurantService
     
     public void AddNewRestaurant(Restaurant restaurant)
     {
-        RestaurantRepository.Save(restaurant);
+        using (var uow = new UnitOfWork())
+        {
+            var newRes = new Restaurant(uow);
+            newRes.Name = restaurant.Name;
+
+            RestaurantRepository.Save(newRes, uow);
+        }
     }
 
     public void UpdateRestaurant(Restaurant restaurant)
     {
         using var uow = new UnitOfWork();
-        var itemToUpdate = uow.GetObjectByKey<Restaurant>(restaurant.Id);
+        var itemToUpdate = uow.GetObjectByKey<Restaurant>(restaurant.Oid);
         
         if (itemToUpdate == null) return;
 
