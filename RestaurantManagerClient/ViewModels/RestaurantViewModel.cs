@@ -8,15 +8,17 @@ namespace RestaurantManagerClient.ViewModels;
 public partial class RestaurantViewModel : ObservableObject
 {
     private RestaurantService RestaurantService { get; set; }
-    
-    [ObservableProperty] 
+
+    [ObservableProperty]
     private Restaurant _newRestaurant = new();
-    
+
     [ObservableProperty]
     private List<Restaurant> _restaurants;
 
+    public Restaurant SelectedRestaurant { get; set; } = new();
 
-    
+
+
     public RestaurantViewModel(RestaurantService restaurantService)
     {
         RestaurantService = restaurantService;
@@ -32,6 +34,13 @@ public partial class RestaurantViewModel : ObservableObject
     private void Refresh()
     {
         Restaurants = RestaurantService.GetAllRestaurants();
+    }
+
+    [RelayCommand]
+    private async void GoToRestaurant()
+    { 
+        var resId = SelectedRestaurant.Oid;
+       await Shell.Current.GoToAsync($"Restaurant/Details?resId={resId}", true);
     }
     
     [RelayCommand]
