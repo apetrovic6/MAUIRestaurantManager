@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using RestaurantManagerClient.Models;
 using RestaurantManagerClient.Services;
 
@@ -21,6 +22,11 @@ public partial class MainPageViewModel : ObservableObject
     {
         Restaurants = RestaurantService.GetAllRestaurants();
     }
-    
+
+    [RelayCommand]
+    private void Refresh()
+    {
+        GetRestaurants();
+    }
     
 }
