@@ -8,25 +8,19 @@
              x:Class="RestaurantManagerClient.Views.Desktop.MainPageDesktop"
              Title="Overview">
     <ContentPage.Content>
-        <VerticalStackLayout>
-            <Label Text="Welcome"/>
-            <CollectionView ItemsSource="{Binding Restaurants}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Restaurant">
-                        <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
-                            <Entry Text="{Binding Id}" />
-                            <Entry Text="{Binding Name}" />
-                            <CollectionView ItemsSource="{Binding Menus}">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="model:Menu">
-                                        <Label Text="{Binding Name}"/>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout>
+                <Button Text="Refresh" Command="{Binding RefreshCommand}"/>
+                <CollectionView ItemsSource="{Binding Restaurants}" ItemsLayout="VerticalGrid, 6">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Restaurant">
+                            <Frame Margin="20" Padding="10">
+                                   <Label Text="{Binding Name}"/>
+                               </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
