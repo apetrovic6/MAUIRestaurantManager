@@ -14,4 +14,13 @@ public partial class MainPageDesktop : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var vm = (MainPageViewModel)BindingContext;
+        
+        vm.GetRestaurants();
+    }
 }

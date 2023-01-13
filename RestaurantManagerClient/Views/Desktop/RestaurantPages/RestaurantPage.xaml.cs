@@ -14,4 +14,13 @@ public partial class RestaurantPage : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var vm = (RestaurantViewModel)BindingContext;
+
+        vm.GetRestaurants();
+    }
 }

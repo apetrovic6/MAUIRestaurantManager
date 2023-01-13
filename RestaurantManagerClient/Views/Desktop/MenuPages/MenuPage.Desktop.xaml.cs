@@ -9,4 +9,12 @@ public partial class MenuPageDesktop : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
+
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        var vm = (MenuPageViewModel)BindingContext;
+        vm.GetMenus();
+    }
 }
