@@ -19,7 +19,7 @@ public partial class MenuPageViewModel : ObservableObject
         GetMenus();
     }
 
-    private void GetMenus()
+    public void GetMenus()
     {
         Menus = MenuService.GetAll();
     }

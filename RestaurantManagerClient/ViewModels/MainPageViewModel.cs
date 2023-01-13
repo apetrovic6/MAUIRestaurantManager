@@ -18,7 +18,7 @@ public partial class MainPageViewModel : ObservableObject
         GetRestaurants();
     }
 
-    private  void GetRestaurants()
+    public  void GetRestaurants()
     {
         Restaurants = RestaurantService.GetAllRestaurants();
     }
