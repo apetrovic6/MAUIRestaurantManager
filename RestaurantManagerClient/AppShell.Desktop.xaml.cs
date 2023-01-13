@@ -21,5 +21,6 @@ public partial class AppShellDesktop : Shell
         Routing.RegisterRoute("Restaurant/Details", typeof(RestaurantDetailPageDesktop));
         
         Routing.RegisterRoute("RestaurantPage", typeof(RestaurantPage));
+        Routing.RegisterRoute("MenuDetailPage", typeof(MenuDetailPageDesktop));
     }
 }
