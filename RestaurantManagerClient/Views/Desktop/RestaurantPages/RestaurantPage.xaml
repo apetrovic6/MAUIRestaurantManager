@@ -11,7 +11,7 @@
         <VerticalStackLayout>
             <Label Text="Restaurant Name"/>
             <Entry Text="{Binding  NewRestaurant.Name}"/>
-            <Button Text="Add New Restaurant" Command="{Binding AddNewRestaurantCommand}"/>
+            <Button StyleClass="RoundedButton" Text="+" Command="{Binding AddNewRestaurantCommand }"/>
             <VerticalStackLayout Spacing="15">
                 <CollectionView ItemsSource="{Binding Restaurants}" ItemsLayout="VerticalGrid, 6" 
                                 SelectionMode="Single"
