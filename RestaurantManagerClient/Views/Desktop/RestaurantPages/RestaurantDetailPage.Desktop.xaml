@@ -16,9 +16,7 @@
         <Label Text="{Binding FetchedRestaurant.Name}" />
         
         <Label Text="Menus"/>
-        <CollectionView ItemsSource="{Binding FetchedRestaurant.Menus}"
-                        
-                        >
+        <CollectionView ItemsSource="{Binding FetchedRestaurant.Menus}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Menu">
                     <VerticalStackLayout>
