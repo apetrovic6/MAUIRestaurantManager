@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using RestaurantManagerClient.Models;
 using RestaurantManagerClient.Services;
 
@@ -32,5 +33,12 @@ public partial class RestaurantDetailViewModel : ObservableObject
     private void GetRestaurant()
     {
         FetchedRestaurant = RestaurantService.GetRestaurantById(RestaurantId);
+    }
+    
+    [RelayCommand]
+    private async void DeleteRestaurant(int id)
+    {
+        RestaurantService.RemoveRestaurant(id);
+        await Shell.Current.GoToAsync("..");
     }
 }
