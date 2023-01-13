@@ -49,4 +49,10 @@ public partial class MenuPageViewModel : ObservableObject
     {
         await Shell.Current.GoToAsync("AddMenuPage", false);
     }
+
+    [RelayCommand]
+    public async void GoToMenuDetails()
+    {
+        await Shell.Current.GoToAsync($"MenuDetailPage?menuId={SelectedMenu.Oid}");
+    }
 }
