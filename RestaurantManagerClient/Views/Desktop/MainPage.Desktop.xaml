@@ -10,7 +10,6 @@
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout>
-                <Button Text="Refresh" Command="{Binding RefreshCommand}"/>
                 <CollectionView ItemsSource="{Binding Restaurants}" ItemsLayout="VerticalGrid, 6">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Restaurant">

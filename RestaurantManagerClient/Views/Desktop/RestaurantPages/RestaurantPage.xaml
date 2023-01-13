@@ -9,8 +9,6 @@
             Title="Restaurants">
     <ContentPage.Content>
         <VerticalStackLayout>
-            <Button WidthRequest="50" HeightRequest="50" CornerRadius="25" Text="+" Command="{Binding AddNewRestaurantCommand }"/>
-            <Button Text="Refresh" Command="{Binding RefreshCommand }"/>
             <Label Text="Restaurant Name"/>
             <Entry Text="{Binding  NewRestaurant.Name}"/>
             <Button Text="Add New Restaurant" Command="{Binding AddNewRestaurantCommand}"/>

@@ -10,14 +10,16 @@
     <ContentPage.Content>
         <VerticalStackLayout>
             <Button WidthRequest="50" HeightRequest="50" CornerRadius="25" Text="+" Command="{Binding GoToAddMenuPageCommand}"/>
-            <Button Text="Refresh" Command="{Binding RefreshCommand}"/>
-            <VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding Menus}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Menu">
-                            <HorizontalStackLayout Spacing="50" VerticalOptions="Center" HorizontalOptions="Center">
-                                <Entry Text="{Binding Id}" />
-                                <Entry Text="{Binding Name}" />
+        
+            <CollectionView ItemsSource="{Binding Menus}" SelectionMode="Single" ItemsLayout="VerticalGrid, 6"
+                            SelectedItem="{Binding SelectedMenu}"
+                            SelectionChangedCommand="{Binding GoToMenuDetailsCommand}"
+            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Menu">
+                        <Frame Margin="10, 10, 20, 10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}"/>
                                 <Label Text="{Binding Restaurant.Name}"/>
                                 <Button Text="Update" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MenuPageViewModel}}, 

@@ -10,7 +10,9 @@
              >
     <ContentPage.Content>
         <VerticalStackLayout>
-        <Label Text="Restaurant Details"/>        
+            <Button Text="Delete Restaurant" Command="{Binding DeleteRestaurantCommand}" 
+                    CommandParameter="{Binding RestaurantId}" />
+            <Label Text="Restaurant Details"/>        
         <Label Text="{Binding FetchedRestaurant.Name}" />
         
         <Label Text="Menus"/>
