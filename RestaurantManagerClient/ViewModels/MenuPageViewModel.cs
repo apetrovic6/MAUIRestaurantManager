@@ -8,11 +8,16 @@ namespace RestaurantManagerClient.ViewModels;
 public partial class MenuPageViewModel : ObservableObject
 {
     private MenuService MenuService { get; set; }
+    private RestaurantService RestaurantService { get; set; }
 
     [ObservableProperty] 
     private List<Menu> _menus;
 
-    public MenuPageViewModel(MenuService menuService)
+    [ObservableProperty] 
+    private List<Restaurant> _restaurants;
+
+    [ObservableProperty] private Menu _selectedMenu = new();
+    public MenuPageViewModel(MenuService menuService, RestaurantService restaurantService)
     {
         MenuService = menuService;
         RestaurantService = restaurantService;
@@ -21,6 +26,7 @@ public partial class MenuPageViewModel : ObservableObject
     public void GetMenus()
     {
         Menus = MenuService.GetAll();
+        Restaurants = RestaurantService.GetAllRestaurants();
     }
 
     
