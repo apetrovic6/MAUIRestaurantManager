@@ -15,8 +15,7 @@ public partial class MenuPageViewModel : ObservableObject
     public MenuPageViewModel(MenuService menuService)
     {
         MenuService = menuService;
-        
-        GetMenus();
+        RestaurantService = restaurantService;
     }
 
     public void GetMenus()

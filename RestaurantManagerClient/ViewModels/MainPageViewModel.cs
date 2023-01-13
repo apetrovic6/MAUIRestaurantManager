@@ -15,7 +15,6 @@ public partial class MainPageViewModel : ObservableObject
     public MainPageViewModel(RestaurantService restaurantService)
     {
         RestaurantService = restaurantService;
-        GetRestaurants();
     }
 
     public  void GetRestaurants()
