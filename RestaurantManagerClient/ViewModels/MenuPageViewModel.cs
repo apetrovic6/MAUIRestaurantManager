@@ -23,11 +23,6 @@ public partial class MenuPageViewModel : ObservableObject
         Menus = MenuService.GetAll();
     }
 
-    [RelayCommand]
-    private void Refresh()
-    {
-        Menus = MenuService.GetAll();
-    }
     
     [RelayCommand]
     private void UpdateMenu(Menu menu)
