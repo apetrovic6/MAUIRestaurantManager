@@ -15,7 +15,7 @@ public class Restaurant : BaseModel
         set => SetPropertyValue(nameof(Name), ref _Name, value);
     }
 
-    [Association("Menus-Restaurant")] public XPCollection<Menu> Menus
+    [Association("Menus-Restaurant"), Aggregated] public XPCollection<Menu> Menus
     {
         get => GetCollection<Menu>(nameof(Menus));
     }
