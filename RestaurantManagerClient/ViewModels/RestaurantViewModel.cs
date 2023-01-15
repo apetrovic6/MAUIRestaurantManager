@@ -10,9 +10,6 @@ public partial class RestaurantViewModel : ObservableObject
     private RestaurantService RestaurantService { get; set; }
 
     [ObservableProperty]
-    private Restaurant _newRestaurant = new();
-
-    [ObservableProperty]
     private List<Restaurant> _restaurants;
 
     public Restaurant SelectedRestaurant { get; set; } = new();
@@ -42,14 +39,13 @@ public partial class RestaurantViewModel : ObservableObject
         var resId = SelectedRestaurant.Oid;
        await Shell.Current.GoToAsync($"Restaurant/Details?resId={resId}", true);
     }
-    
-    [RelayCommand]
-    private void AddNewRestaurant()
-    {
-        RestaurantService.AddNewRestaurant(NewRestaurant);
-        GetRestaurants();
-    }
 
+    [RelayCommand]
+    private async void GoToCreateRestaurant()
+    {
+        await Shell.Current.GoToAsync("AddRestaurantPage", true);
+    }
+    
     [RelayCommand]
     private void UpdateRestaurant(Restaurant restaurant)
     {
