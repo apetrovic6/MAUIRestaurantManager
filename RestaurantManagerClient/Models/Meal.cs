@@ -6,6 +6,8 @@ public class Meal : BaseModel
 {
     public  Meal(Session session) : base(session) {}
 
+    public Meal() { }
+
     private string _Name;
 
     public string Name
