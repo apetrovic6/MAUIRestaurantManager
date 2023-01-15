@@ -38,15 +38,40 @@ public class MenuService
         
     }
 
-    public void UpdateMenu(Menu menu)
+    public void UpdateMenu(Menu menu, List<Meal> meals = null)
     {
-        using var uow = new UnitOfWork();
-        var itemToUpdate = uow.GetObjectByKey<Menu>(menu.Oid);
-        
-        if (itemToUpdate == null) return;
+        using (var uow = new UnitOfWork())
+        {
+            var itemToUpdate = uow.GetObjectByKey<Menu>(menu.Oid);
 
-        itemToUpdate.Name = menu.Name;
-        MenuRepository.Update(itemToUpdate, uow);
+            if (itemToUpdate == null) return;
+
+            itemToUpdate.Name = menu.Name;
+
+            if (meals != null)
+            {
+                foreach (var meal in meals)
+                {
+                    var mealToAdd = uow.GetObjectByKey<Meal>(meal.Oid);
+                    itemToUpdate.Meals.Add(mealToAdd);
+                }
+            }
+            itemToUpdate.Name = menu.Name;
+            MenuRepository.Update(itemToUpdate, uow);
+        }
+    }
+
+
+    public void RemoveMeal(int menuId, Meal selectedMeal)
+    {
+        using (var uow = new UnitOfWork())
+        {
+            var menu = uow.GetObjectByKey<Menu>(menuId);
+            var mealToDelete = uow.GetObjectByKey<Meal>(selectedMeal.Oid);
+
+            menu.Meals.Remove(mealToDelete);
+            uow.CommitChanges();
+        }
     }
 
     public void RemoveMenu(int id)
