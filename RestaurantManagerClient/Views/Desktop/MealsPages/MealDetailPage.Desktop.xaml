@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
+             xmlns:model="clr-namespace:RestaurantManagerClient.Models"
+             x:DataType="vm:MealDetailPageViewModel"
+             x:Class="RestaurantManagerClient.Views.Desktop.MealsPages.MealDetailPageDesktop">
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Label Text="{Binding MealId}"/>
+            <Label Text="{Binding FetchedMeal.Name}"/>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
