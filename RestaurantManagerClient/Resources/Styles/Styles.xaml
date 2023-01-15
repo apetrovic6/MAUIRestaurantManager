@@ -406,5 +406,8 @@
         <Setter Property="WidthRequest" Value="50"/>
         <Setter Property="HeightRequest" Value="50"/>
         <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="Margin" Value="0, 0, 15, 10" />
     </Style>
 </ResourceDictionary>
