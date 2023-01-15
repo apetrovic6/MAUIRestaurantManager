@@ -14,7 +14,8 @@ public partial class MealPageViewModel : ObservableObject
     {
         MealService = mealService;
     }
-    
+
+    public Meal SelectedMeal { get; set; } = new Meal();
     
     public void GetMeals()
     {

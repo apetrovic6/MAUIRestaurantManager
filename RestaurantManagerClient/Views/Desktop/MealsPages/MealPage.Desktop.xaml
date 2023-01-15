@@ -9,7 +9,11 @@
     <ContentPage.Content>
         <Grid RowDefinitions=".9*, .1*">
             <VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding Meals}">
+                <CollectionView ItemsSource="{Binding Meals}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding SelectedMeal}"
+                                SelectionChangedCommand="{Binding GoToMealCommand}"
+                                >
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Meal">
                             <Label Text="{Binding Name}"/>
