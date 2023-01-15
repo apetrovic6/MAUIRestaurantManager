@@ -7,6 +7,7 @@ using RestaurantManagerClient.Repositories;
 using RestaurantManagerClient.Services;
 using RestaurantManagerClient.ViewModels;
 using RestaurantManagerClient.Views.Desktop;
+using RestaurantManagerClient.Views.Desktop.MealsPages;
 using RestaurantManagerClient.Views.Desktop.MenuPages;
 using RestaurantManagerClient.Views.Desktop.RestaurantPages;
 using RestaurantManagerClient.Views.Mobile;
@@ -33,9 +34,11 @@ public static class MauiProgram
         
         builder.Services.AddSingleton<Repository<Restaurant>>();
         builder.Services.AddSingleton<Repository<Menu>>();
+        builder.Services.AddSingleton<Repository<Meal>>();
         
         builder.Services.AddSingleton<RestaurantService>();
         builder.Services.AddSingleton<MenuService>();
+        builder.Services.AddSingleton<MealService>();
         
         builder.Services.AddSingleton<MainPageDesktop>();
         builder.Services.AddSingleton<MainPageMobile>();
@@ -54,6 +57,15 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MenuDetailPageDesktop>();
         builder.Services.AddTransient<MenuDetailViewModel>();
+
+        builder.Services.AddTransient<AddRestaurantPageDesktop>();
+        builder.Services.AddTransient<AddNewRestaurantViewModel>();
+
+        builder.Services.AddTransient<MealPageDesktop>();
+        builder.Services.AddTransient<MealPageViewModel>();
+        
+        builder.Services.AddTransient<AddMealPageDesktop>();
+        builder.Services.AddTransient<AddMealPageViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
