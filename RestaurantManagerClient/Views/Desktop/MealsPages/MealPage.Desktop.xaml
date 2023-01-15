@@ -2,8 +2,29 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
+             xmlns:models="clr-namespace:RestaurantManagerClient.Models"
+             x:DataType="vm:MealPageViewModel"
              x:Class="RestaurantManagerClient.Views.Desktop.MealsPages.MealPageDesktop">
     <ContentPage.Content>
-        
+        <Grid RowDefinitions=".9*, .1*">
+            <VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Meals}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Meal">
+                            <Label Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+            
+            <Button
+                Grid.Row="1"
+                ToolTipProperties.Text="Add New Meal"
+                StyleClass="RoundedButton"
+                Text="+"
+                Command="{Binding GoToAddMealCommand}"
+                />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
