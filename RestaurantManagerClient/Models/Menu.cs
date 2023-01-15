@@ -16,7 +16,7 @@ public class Menu : BaseModel
 
     private Restaurant _Restaurant;
 
-    [Association("Menus-Restaurant"), Aggregated]
+    [Association("Menus-Restaurant")]
     public Restaurant Restaurant
     {
         get => _Restaurant;
