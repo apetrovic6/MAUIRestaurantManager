@@ -9,13 +9,11 @@
              Title="Menus">
     <ContentPage.Content>
         <ScrollView>
-            <VerticalStackLayout>
-            <Button WidthRequest="50" HeightRequest="50" CornerRadius="25" Text="+" Command="{Binding GoToAddMenuPageCommand}"/>
-        
-            <CollectionView ItemsSource="{Binding Menus}" SelectionMode="Single" ItemsLayout="VerticalGrid, 6"
-                            SelectedItem="{Binding SelectedMenu}"
-                            SelectionChangedCommand="{Binding GoToMenuDetailsCommand}"
-            >
+            <Grid RowDefinitions=".9*, .1*">
+                <CollectionView ItemsSource="{Binding Menus}" SelectionMode="Single" ItemsLayout="VerticalGrid, 6"
+                                SelectedItem="{Binding SelectedMenu}"
+                                SelectionChangedCommand="{Binding GoToMenuDetailsCommand}"
+                >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Menu">
                         <Frame Margin="10, 10, 20, 10">
@@ -28,7 +26,12 @@
                 </CollectionView.ItemTemplate>
                   
             </CollectionView>
-        </VerticalStackLayout>
+            <Button 
+                ToolTipProperties.Text="Add New Menu"
+                StyleClass="RoundedButton" 
+                Text="+" 
+                Command="{Binding GoToAddMenuPageCommand}"/>
+        </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
