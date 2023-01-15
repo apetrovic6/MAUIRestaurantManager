@@ -9,9 +9,53 @@
              Title="{Binding FetchedMenu.Name}"
              >
     <ContentPage.Content>
+        <Grid RowDefinitions=".9*, .1*">
+            
         <VerticalStackLayout>
-            <Label Text="Menu Detail Page" />
-            <Label Text="{Binding FetchedMenu.Name}"/>
+            
+            <Label Text="Menu Items"/>
+            <CollectionView ItemsSource="{Binding FetchedMenu.Meals}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Meal">
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Name}"/>
+                                <Button Text="Remove" Command="{
+                                Binding Source={RelativeSource 
+                                AncestorType={x:Type vm:MenuDetailViewModel
+                                }}, Path=RemoveMealFromMenuCommand}" 
+                                        CommandParameter="{Binding .}"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Label Text="Add meals to menu"/>
+            
+            
+                <CollectionView 
+                    ItemsLayout="VerticalGrid, 4"
+                    ItemsSource="{Binding Meals}" 
+                    SelectionMode="Multiple" 
+                    SelectedItems="{Binding SelectedMeals}"
+                >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Meal">
+                            <Label Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+            
+            <Button Text="Add Meal to Menu" Command="{Binding AddMealsToMenuCommand}"/>
         </VerticalStackLayout>
+            <Button
+                ToolTipProperties.Text="Remove Menu"
+                StyleClass="RoundedButton" 
+                Text="-" 
+                Command="{Binding RemoveMenuCommand }"
+            />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
