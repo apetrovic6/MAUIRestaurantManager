@@ -8,10 +8,7 @@
              x:Class="RestaurantManagerClient.Views.Desktop.RestaurantPages.RestaurantPage"
             Title="Restaurants">
     <ContentPage.Content>
-        <VerticalStackLayout>
-            <Label Text="Restaurant Name"/>
-            <Entry Text="{Binding  NewRestaurant.Name}"/>
-            <Button StyleClass="RoundedButton" Text="+" Command="{Binding AddNewRestaurantCommand }"/>
+        <Grid RowDefinitions=".9*, .1*">
             <VerticalStackLayout Spacing="15">
                 <CollectionView ItemsSource="{Binding Restaurants}" ItemsLayout="VerticalGrid, 6" 
                                 SelectionMode="Single"
@@ -27,6 +24,11 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
-        </VerticalStackLayout>
+            <Button Grid.Row="1" 
+                    ToolTipProperties.Text="Add New Restaurant"
+                    StyleClass="RoundedButton" 
+                    Text="+" 
+                    Command="{Binding GoToCreateRestaurantCommand }"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
