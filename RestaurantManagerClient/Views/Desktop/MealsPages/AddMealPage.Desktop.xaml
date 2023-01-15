@@ -2,8 +2,16 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestaurantManagerClient.Views.Desktop.MealsPages.AddMealPageDesktop">
+             xmlns:vm="clr-namespace:RestaurantManagerClient.ViewModels"
+             xmlns:model="clr-namespace:RestaurantManagerClient.Models"
+             x:DataType="vm:AddMealPageViewModel"
+             x:Class="RestaurantManagerClient.Views.Desktop.MealsPages.AddMealPageDesktop"
+             Title="Add a new Meal">
     <ContentPage.Content>
-        
+        <VerticalStackLayout>
+            <Label Text="Meal Name"/>
+                <Entry Text="{Binding NewMeal.Name }"/>
+            <Button Text="Add New Meal" Command="{Binding AddNewMealCommand}" />
+        </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
