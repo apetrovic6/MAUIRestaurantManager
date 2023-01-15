@@ -43,7 +43,7 @@ public partial class RestaurantViewModel : ObservableObject
     [RelayCommand]
     private async void GoToCreateRestaurant()
     {
-        await Shell.Current.GoToAsync("AddRestaurantPage", true);
+        await Shell.Current.GoToAsync("///RestaurantPage/Add", true);
     }
     
     [RelayCommand]

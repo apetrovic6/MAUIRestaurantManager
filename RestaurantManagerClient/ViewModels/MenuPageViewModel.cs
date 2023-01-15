@@ -47,7 +47,7 @@ public partial class MenuPageViewModel : ObservableObject
     [RelayCommand]
     private async void GoToAddMenuPage()
     {
-        await Shell.Current.GoToAsync("AddMenuPage", false);
+        await Shell.Current.GoToAsync("///MenuPage/Add", false);
     }
 
     [RelayCommand]

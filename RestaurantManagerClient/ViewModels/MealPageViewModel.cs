@@ -24,12 +24,12 @@ public partial class MealPageViewModel : ObservableObject
     [RelayCommand]
     private async void GoToAddMeal()
     {
-        await Shell.Current.GoToAsync("AddMealPage");
+        await Shell.Current.GoToAsync("///MealPage/Add");
     }
 
     [RelayCommand]
     private async void GoToMeal()
     {
-        
+        await Shell.Current.GoToAsync($"///MealPage/Details?mealId={SelectedMeal.Oid}");
     }
 }
